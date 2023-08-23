@@ -11,7 +11,7 @@ export const POST = async (req, res) => {
 
     console.log(referer)
     console.log(req.body)
-    const body = req.body;
+    const body = {};
     const signature = referer;
     const isValid = verifyWebhookSignature({ body, signature, secret });
 
