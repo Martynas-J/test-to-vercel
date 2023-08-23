@@ -6,19 +6,14 @@ export const POST = async (req, res) => {
     }
 
     console.log(req.headers["gcms-signature"])
-    if (req.headers["gcms-signature"] !== process.env.REVALIDATE_TOKEN) {
+    if (req.headers["gcms-signature"] !== "51528335b4a7e132-8a78cc1644bdd854-49429d9502d9f6a0") {
         return new NextResponse(" Invalid token Error :(", { status: 401 });
     }
 
     try {
-        // Process the data from the POST request
-        // You can access the request body using req.body
-        // For example:
         // const data = req.body;
         // console.log(data)
-
         // Perform any actions or data processing here
-
         // await res.revalidate("/");
         return new NextResponse("Veikia", { status: 200 });
     } catch (err) {
