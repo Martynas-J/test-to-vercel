@@ -4,9 +4,11 @@ import { NextResponse } from 'next/server';
 export const POST = async (req, res) => { 
     const secret = '51528335b4a7e132-8a78cc1644bdd854-49429d9502d9f6a0';
 
-    const body = ""
-    const signature = req.headers['gcms-signature']; 
-    const isValid = verifyWebhookSignature({ body, signature, secret }); 
+    const body = {
+        hello: "world",
+      };
+      
+      const signature = generateWebhookSignature({ body, secret });
     
 
 
