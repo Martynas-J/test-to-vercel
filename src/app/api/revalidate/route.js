@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import { generateWebhookSignature, verifyWebhookSignature } from '@hygraph/utils';
+import { headers } from "next/headers";
+
 
 export const POST = async (req, res) => {
     const secret = "2e9291f10d44ca10204a4cd81b05d73b6a316b2b605d4e2e0e0b37b40198ce1f";
@@ -8,7 +10,10 @@ export const POST = async (req, res) => {
     const signature = generateWebhookSignature({ body, secret });
     const isValid = verifyWebhookSignature({ body, signature, secret });
 
-    console.log(req.headers['gcms-signature']['value'])
+    const headersList = headers();
+    const referer = headersList.get("gcms-signature");
+
+    console.log(referer)
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
