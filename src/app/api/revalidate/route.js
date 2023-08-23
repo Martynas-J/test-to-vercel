@@ -5,8 +5,8 @@ export const POST = async (req, res) => {
     const secret = process.env.REVOKE_TOKEN;
 
     const body = {};
-    const signature = "sign=43Y1nTd/xh1T+y3Hi2R4Jx+qJ8/VFgVYdSfXQFg8ZZQ=, env=master, t=1692820497695";
-    const isValid = verifyWebhookSignature({ body, signature, secret });
+    // const signature = "sign=43Y1nTd/xh1T+y3Hi2R4Jx+qJ8/VFgVYdSfXQFg8ZZQ=, env=master, t=1692820497695";
+    const isValid = verifyWebhookSignature({ body, secret });
 
 
     if (req.method !== 'POST') {
