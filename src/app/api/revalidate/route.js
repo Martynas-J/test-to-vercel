@@ -8,7 +8,7 @@ export const POST = async (req, res) => {
     const signature = generateWebhookSignature({ body, secret });
     const isValid = verifyWebhookSignature({ body, signature, secret });
 
-    console.log(req.headers['gcms-signature'].split(', '))
+    console.log(req.headers)
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
@@ -22,7 +22,7 @@ export const POST = async (req, res) => {
         // console.log(data)
         // Perform any actions or data processing here
         // await res.revalidate("/");
-        return new NextResponse("Veikia" , { status: 200 });
+        return new NextResponse("Veikia" + isValid, { status: 200 });
     } catch (err) {
         return new NextResponse(" Error :(", { status: 500 });
     }
