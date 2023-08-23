@@ -10,14 +10,13 @@ export const POST = async (req, res) => {
     const referer = headersList.get("gcms-signature");
 
     console.log(referer)
-
+    console.log(req.body)
     const body = req.body;
     const signature = referer;
     const isValid = verifyWebhookSignature({ body, signature, secret });
 
 
 
-    console.log(referer)
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
