@@ -6,9 +6,9 @@ export const POST = async (req, res) => {
   }
 
   // Check for secret to confirm this is a valid request
-//   if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
-//     return res.status(401).json({ message: 'Invalid token' });
-//   }
+  if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
+    return res.status(401).json({ message: 'Invalid token' });
+  }
 
   try {
     // Process the data from the POST request
@@ -19,7 +19,7 @@ export const POST = async (req, res) => {
 
     // Perform any actions or data processing here
 
-    await res.revalidate("/");
+    // await res.revalidate("/");
     return new NextResponse("Veikia", { status: 200 });
   } catch (err) {
     return new NextResponse(" Error :(", { status: 500 });
