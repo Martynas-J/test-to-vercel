@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { generateWebhookSignature, verifyWebhookSignature } from '@hygraph/utils';
 
 export const POST = async (req, res) => {
-    const secret = "2e9291f10d44ca10204a4cd81b05d73b6a316b2b605d4e2e0e0b37b40198ce1f";
+    const secret = "2e9291f10d44ca10204a4cd81b05d73b6a316b2b605d4e2e0e0b37b40198ce1g";
 
     const body = req.body;
     const signature = generateWebhookSignature({ body, secret });
