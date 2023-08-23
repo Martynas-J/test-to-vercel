@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hygraph/utils": "^1.2.1",
     "@radix-ui/react-accordion": "^1.1.2",
     "autoprefixer": "10.4.15",
     "class-variance-authority": "^0.7.0",
