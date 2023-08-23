@@ -1,19 +1,26 @@
-const path = require("path");
+import { apiResolver } from 'next/dist/next-server/server/api-utils';
 
-module.exports = async function handler(req, res) {
-  // Check for secret to confirm this is a valid request
-  if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
-    return res.status(401).json({ message: "Invalid token" });
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method Not Allowed' });
   }
 
-  if (!req.body) {
-    return res.status(422).json({ message: "Invalid request body" });
+  // Check for secret to confirm this is a valid request
+  if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
+    return res.status(401).json({ message: 'Invalid token' });
   }
 
   try {
-    await res.revalidate(path.join("/", req.body.data.slug));
-    return res.status(200).json({ revalidated: true });
+    // Process the data from the POST request
+    // You can access the request body using req.body
+    // For example:
+    const data = req.body;
+
+    // Perform any actions or data processing here
+
+    await apiResolver(req, res, undefined, '/'); // Revalidate the '/'
+    return res.json({ success: true });
   } catch (err) {
-    return res.status(500).send("Error revalidating");
+    return res.status(500).send('Error processing webhook');
   }
-};
+}

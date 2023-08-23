@@ -2,7 +2,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import FeaturedPosts from "@/components/ui/FeaturedPosts";
 import { fetchGraphQL } from "@/lib/graphql-utils";
 
-export const revalidate = 10;
+// export const revalidate = 10;
 
 async function getProjects() {
   const query = `
