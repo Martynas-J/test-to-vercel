@@ -5,15 +5,15 @@ export const POST = async (req, res) => {
     const secret = process.env.REVOKE_TOKEN;
 
     const body = {};
-    // const signature = "sign=43Y1nTd/xh1T+y3Hi2R4Jx+qJ8/VFgVYdSfXQFg8ZZQ=, env=master, t=1692820497695";
-    const isValid = verifyWebhookSignature({ body, secret });
+    const signature = "sign=43Y1nTd/xh1T+y3Hi2R4Jx+qJ8/VFgVYdSfXQFg8ZZQ=, env=master, t=1692820497695";
+    const isValid = verifyWebhookSignature({ body, signature, secret });
 
 
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
 
-    if (!isValid) {
+    if (isValid) {
         return new NextResponse(" Invalid token Error :(", { status: 401 });
     }
 
