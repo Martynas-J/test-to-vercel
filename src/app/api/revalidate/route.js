@@ -5,7 +5,7 @@ export const POST = async (req, res) => {
     const secret = process.env.REVOKE_TOKEN;
 
     const body = {};
-    const signature = '...';
+    const signature = "sign=43Y1nTd/xh1T+y3Hi2R4Jx+qJ8/VFgVYdSfXQFg8ZZQ=, env=master, t=1692820497695";
     const isValid = verifyWebhookSignature({ body, signature, secret });
 
 
@@ -22,8 +22,8 @@ export const POST = async (req, res) => {
         // console.log(data)
         // Perform any actions or data processing here
         // await res.revalidate("/");
-        return new NextResponse("Veikia", { status: 200 });
+        return new NextResponse("Veikia" + isValid, { status: 200 });
     } catch (err) {
-        return new NextResponse(" Error :(", { status: 501 });
+        return new NextResponse(" Error :(", { status: 500 });
     }
 }
