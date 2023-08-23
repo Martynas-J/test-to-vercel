@@ -5,7 +5,7 @@ export const POST = async (req, res) => {
     const secret = process.env.REVOKE_TOKEN;
 
     const body = {};
-    const signature = "";
+    const signature = '...';
     const isValid = verifyWebhookSignature({ body, signature, secret });
 
 
@@ -24,6 +24,6 @@ export const POST = async (req, res) => {
         // await res.revalidate("/");
         return new NextResponse("Veikia", { status: 200 });
     } catch (err) {
-        return new NextResponse(" Error :(", { status: 500 });
+        return new NextResponse(" Error :(", { status: 501 });
     }
 }
