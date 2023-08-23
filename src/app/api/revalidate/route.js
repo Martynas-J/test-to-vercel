@@ -8,7 +8,7 @@ export const POST = async (req, res) => {
     console.log(req.headers["gcms-signature"])
     if (req.headers["gcms-signature"] !== process.env.REVALIDATE_TOKEN) {
         return new NextResponse(" Invalid token Error :(", { status: 401 });
-    // }
+    }
 
     try {
         // Process the data from the POST request
