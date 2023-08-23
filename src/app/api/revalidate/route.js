@@ -10,8 +10,8 @@ export const POST = async (req, res) => {
     const referer = headersList.get("gcms-signature");
 
     console.log(referer)
-    console.log(req.body)
     const body = req.body;
+    console.log(generateWebhookSignature({ body, secret }))
     const signature = referer;
     const isValid = verifyWebhookSignature({ body, signature, secret });
 
