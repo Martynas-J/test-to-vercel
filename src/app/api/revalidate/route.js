@@ -1,4 +1,4 @@
-import { verifyWebhookSignature } from '@hygraph/utils';
+import { generateWebhookSignature, verifyWebhookSignature } from '@hygraph/utils';
 import { NextResponse } from 'next/server';
 
 export const POST = async (req, res) => { 
@@ -25,7 +25,7 @@ export const POST = async (req, res) => {
         // console.log(data)
         // Perform any actions or data processing here
         // await res.revalidate("/");
-        return new NextResponse("Veikia", { status: 200 });
+        return new NextResponse(signature, { status: 200 });
     } catch (err) {
         return new NextResponse(" Error :(", { status: 500 });
     }
