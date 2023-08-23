@@ -17,7 +17,7 @@ export const POST = async (req, res) => {
 
     // if (isValid) {
     //     return new NextResponse(" Invalid token Error :(", { status: 401 });
-    }
+    // }
 
     try {
         // const data = req.body;
