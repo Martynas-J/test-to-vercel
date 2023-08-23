@@ -20,7 +20,7 @@ export const POST = async (req, res) => {
         // Perform any actions or data processing here
 
         // await res.revalidate("/");
-        return new NextResponse("Veikia", { status: 200 });
+        return new NextResponse(req, { status: 200 });
     } catch (err) {
         return new NextResponse(" Error :(", { status: 500 });
     }
