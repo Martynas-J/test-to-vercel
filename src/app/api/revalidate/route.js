@@ -5,7 +5,7 @@ export const POST = async (req, res) => {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
 
-    console.log(req.headers)
+    console.log(req.headers["gcms-signature"])
     // if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
     //     return new NextResponse(" Invalid token Error :(", { status: 401 });
     // }
@@ -20,7 +20,7 @@ export const POST = async (req, res) => {
         // Perform any actions or data processing here
 
         // await res.revalidate("/");
-        return new NextResponse("Veikia", { status: 200 });
+        return new NextResponse(req.headers["gcms-signature"], { status: 200 });
     } catch (err) {
         return new NextResponse(" Error :(", { status: 500 });
     }
