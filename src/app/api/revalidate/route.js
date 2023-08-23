@@ -5,7 +5,7 @@ export const POST = async (req, res) => {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
 
-    console.dir(req.headers)
+    console.log(req.headers)
     // if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
     //     return new NextResponse(" Invalid token Error :(", { status: 401 });
     // }
