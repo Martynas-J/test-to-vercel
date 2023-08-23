@@ -15,8 +15,8 @@ export const POST = async (req, res) => {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
 
-    if (isValid) {
-        return new NextResponse(" Invalid token Error :(", { status: 401 });
+    // if (isValid) {
+    //     return new NextResponse(" Invalid token Error :(", { status: 401 });
     }
 
     try {
