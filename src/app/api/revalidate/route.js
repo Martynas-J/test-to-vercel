@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
 import { verifyWebhookSignature } from '@hygraph/utils';
+import { NextResponse } from 'next/server';
 
 export const POST = async (req, res) => {
     const secret = '51528335b4a7e132-8a78cc1644bdd854-49429d9502d9f6a0';
@@ -13,7 +13,7 @@ export const POST = async (req, res) => {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
 
-    if (!isValid) {
+    if (isValid) {
         return new NextResponse(" Invalid token Error :(", { status: 401 });
     }
 
