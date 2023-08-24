@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import { generateWebhookSignature, verifyWebhookSignature } from '@hygraph/utils';
 import { headers } from "next/headers";
 import { revalidatePath } from 'next/cache'
-import { NextApiRequest, NextApiResponse } from 'next';
 
 
 export const POST = async (req, res) => {
@@ -13,6 +12,31 @@ export const POST = async (req, res) => {
 
     const signature = headers().get("gcms-signature");
     console.log(signature)
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
+    console.log(generateWebhookSignature({ rawPayload, secret }))
     console.log(generateWebhookSignature({ rawPayload, secret }))
 
     const isValid = verifyWebhookSignature({ rawPayload, signature, secret });
