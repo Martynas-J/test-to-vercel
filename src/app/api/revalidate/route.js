@@ -39,7 +39,7 @@ export const POST = async (req, res) => {
 
     try {
         // revalidatePath('/a')
-        await res.revalidate('/a');
+        await res.revalidatePath('/a');
         return new NextResponse("Veikia", { status: 200 });
     } catch (err) {
         return new NextResponse(" Error :(", { status: 500 });
