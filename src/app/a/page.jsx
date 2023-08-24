@@ -3,6 +3,7 @@ import { fetchGraphQL } from '@/lib/graphql-utils';
 
 export const revalidate = 0;  
 
+
 async function getPosts() {
   const query = `
   query Posts {
@@ -22,7 +23,7 @@ async function getPosts() {
   }
 `;
 
-  const data = await fetchGraphQL(query);
+  const data = await fetchGraphQL(query, { next: { tags: ['posts'] } });
   return data;
 }
 
