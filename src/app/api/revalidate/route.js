@@ -14,6 +14,7 @@ export const POST = async (req, res) => {
     const Timestamp = parseInt(rawTimestamp.replace('t=', ''));
 
     const body = await req.json()
+    console.log(await req.json())
 
     let payload = JSON.stringify({
         Body: body,
@@ -26,7 +27,6 @@ export const POST = async (req, res) => {
     const hash = createHmac('sha256', secret).update(payload).digest('base64');
     // const isValid = sign === hash;
 
-    console.log(await req.json())
     // console.log(JSON.stringify(req.body))
     console.log(payload)
     console.log(hash)
