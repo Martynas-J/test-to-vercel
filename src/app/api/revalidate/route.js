@@ -4,6 +4,7 @@ import { revalidatePath } from 'next/cache'
 
 export const POST = async (req, res) => {
     const secret = process.env.SECRET_HYGRAPH
+    console.log(secret)
 
     const signature = headers().get("gcms-signature");
 
