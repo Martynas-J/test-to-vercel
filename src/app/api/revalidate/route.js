@@ -11,20 +11,23 @@ export const POST = async (req, res) => {
 
     console.log(req.headers)
     const signature = headers().get("gcms-signature");
-    console.log(signature)
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
 
+    const [rawSign, rawEnv, rawTimestamp] = signature.split(', ');
 
-    const isValid = verifyWebhookSignature({ rawPayload, signature, secret });
+    const sign = rawSign.replace('sign=', '');
+    const EnvironmentName = rawEnv.replace('env=', '');
+    const Timestamp = parseInt(rawTimestamp.replace('t=', ''));
+
+    let payload = JSON.stringify({
+        Body: JSON.stringify(body),
+        EnvironmentName,
+        TimeStamp: Timestamp,
+    });
+
+    const { createHmac } = require('crypto');
+
+    const hash = createHmac('sha256', secret).update(payload).digest('base64');
+    const isValid = sign === hash;
     console.log(isValid)
 
 
@@ -39,10 +42,6 @@ export const POST = async (req, res) => {
     // }
 
     try {
-        // const data = req.body;
-        // console.log(data)
-        // Perform any actions or data processing here
-        // await res.revalidate("/");
         revalidatePath('/')
         return new NextResponse("Veikia" + isValid, { status: 200 });
     } catch (err) {
