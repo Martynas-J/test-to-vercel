@@ -15,10 +15,6 @@ export const POST = async (req, res) => {
 
     const bodyReq = await req.json()
     const body = JSON.stringify(bodyReq)
-    // console.log(body)
-    // console.log(JSON.stringify(body))
-    // console.log(body.stringify())
-    // console.log(JSON.body)
 
     let payload = JSON.stringify({
         Body: body,
@@ -29,20 +25,15 @@ export const POST = async (req, res) => {
     const { createHmac } = require('crypto');
 
     const hash = createHmac('sha256', secret).update(payload).digest('base64');
-    // const isValid = sign === hash;
-
-    // console.log(JSON.stringify(req.body))
-    console.log(payload)
-    console.log(hash)
-    console.log(sign)
+    const isValid = sign === hash;
 
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
 
-    // if (!isValid) {
-    //     return new NextResponse(" Invalid token Error :(", { status: 401 });
-    // }
+    if (!isValid) {
+        return new NextResponse(" Invalid token Error :(", { status: 401 });
+    }
 
     try {
         revalidatePath('/')
