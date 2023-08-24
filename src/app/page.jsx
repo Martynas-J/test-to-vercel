@@ -21,37 +21,15 @@ async function getProjects() {
   return data;
 }
 
-async function getPosts() {
-  const query = `
-  query Posts {
-    posts {
-      createdAt
-      content {
-        text
-      }
-      title
-      publishedAt
-      updatedAt
-      createdBy {
-        name
-      }
-      id
-    }
-  }
-`;
 
-  const data = await fetchGraphQL(query);
-  return data;
-}
 
 export default async function Home() {
   const { heroes } = await getProjects();
-  const { posts } = await getPosts();
 
   return (
     <div>
       <div>MagicJourney Labs</div>
-      <FeaturedPosts data={posts} />
+
       <div>{heroes[0].heroText}</div>
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">

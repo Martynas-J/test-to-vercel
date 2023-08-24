@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { headers } from "next/headers";
 import { revalidatePath } from 'next/cache'
+import { createHmac } from 'crypto';
 
 export const POST = async (req, res) => {
     const secret = process.env.HYGRAPH_POSTS_WEBHOOK_KEY
@@ -21,8 +22,6 @@ export const POST = async (req, res) => {
         EnvironmentName,
         TimeStamp: Timestamp,
     });
-
-    const { createHmac } = require('crypto');
 
     const hash = createHmac('sha256', secret).update(payload).digest('base64');
     const isValid = sign === hash;
