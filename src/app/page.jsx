@@ -1,5 +1,4 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import FeaturedPosts from "@/components/ui/FeaturedPosts";
 import { fetchGraphQL } from "@/lib/graphql-utils";
 
 export const revalidate = 10;  
