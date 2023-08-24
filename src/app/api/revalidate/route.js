@@ -14,46 +14,7 @@ export const POST = async (req, res) => {
     const Timestamp = parseInt(rawTimestamp.replace('t=', ''));
 
     let payload = JSON.stringify({
-        Body: JSON.stringify({
-            "operation": "publish",
-            "data": {
-              "__typename": "Post",
-              "content": {
-                "__typename": "RichText",
-                "raw": {
-                  "children": [
-                    {
-                      "children": [
-                        {
-                          "text": "cx"
-                        }
-                      ],
-                      "type": "paragraph"
-                    }
-                  ]
-                }
-              },
-              "createdAt": "2023-08-24T10:56:01.855287+00:00",
-              "createdBy": {
-                "__typename": "User",
-                "id": "clljx52d51ri901t4axmnfggi"
-              },
-              "id": "cllp1sztb59sv0bmmm1hbp5me",
-              "publishedAt": "2023-08-24T10:56:02.213464+00:00",
-              "publishedBy": {
-                "__typename": "User",
-                "id": "clljx52d51ri901t4axmnfggi"
-              },
-              "scheduledIn": [],
-              "stage": "PUBLISHED",
-              "title": "cx",
-              "updatedAt": "2023-08-24T10:56:01.855287+00:00",
-              "updatedBy": {
-                "__typename": "User",
-                "id": "clljx52d51ri901t4axmnfggi"
-              }
-            }
-          }),
+        Body: JSON.stringify({}),
         EnvironmentName,
         TimeStamp: Timestamp,
     });
@@ -63,7 +24,7 @@ export const POST = async (req, res) => {
     const hash = createHmac('sha256', secret).update(payload).digest('base64');
     // const isValid = sign === hash;
 
-    // console.log(req)
+    console.log(JSON.stringify(req))
     // console.log(JSON.stringify(req.body))
     console.log(payload)
     console.log(hash)
