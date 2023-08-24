@@ -13,19 +13,12 @@ export const POST = async (req, res) => {
     const EnvironmentName = rawEnv.replace('env=', '');
     const Timestamp = parseInt(rawTimestamp.replace('t=', ''));
 
-    let payload = JSON.stringify({
-        Body: JSON.stringify(req.body),
-        EnvironmentName,
-        TimeStamp: Timestamp,
-    });
 
     const { createHmac } = require('crypto');
 
-    const hash = createHmac('sha256', secret)
+    const hash = createHmac('sha256', secret).digest('base64')
     console.log(hash)
-    console.log(hash.update(payload))
-    console.log(hash.digest('base64'))
-    console.log(hash.update(payload).digest('base64'))
+
 
     // const isValid = sign === hash;
 
