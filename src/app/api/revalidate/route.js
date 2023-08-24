@@ -24,6 +24,7 @@ export const POST = async (req, res) => {
     const hash = createHmac('sha256', secret).update(payload).digest('base64');
     // const isValid = sign === hash;
 
+    console.log(req.payload)
     console.log(JSON.stringify(req.body))
     console.log(payload)
     console.log(hash)
@@ -39,7 +40,7 @@ export const POST = async (req, res) => {
 
     try {
         revalidatePath('/')
-        return new NextResponse("Veikia" , { status: 200 });
+        return new NextResponse("Veikia", { status: 200 });
     } catch (err) {
         return new NextResponse(" Error :(", { status: 500 });
     }
