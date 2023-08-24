@@ -7,15 +7,23 @@ export const POST = async (req, res) => {
 
     const signature = headers().get("gcms-signature");
 
-    const [rawSign] = signature.split(', ');
+    const [rawSign, rawEnv, rawTimestamp] = signature.split(', ');
 
     const sign = rawSign.replace('sign=', '');
+    const EnvironmentName = rawEnv.replace('env=', '');
+    const Timestamp = parseInt(rawTimestamp.replace('t=', ''));
+
+    let payload = JSON.stringify({
+        Body: JSON.stringify(req.body),
+        EnvironmentName,
+        TimeStamp: Timestamp,
+    });
 
     const { createHmac } = require('crypto');
 
-    const hash = createHmac("sha256", secret).update(payload).digest("base64")
+    const hash = createHmac('sha256', secret).update(payload).digest('base64');
     // const isValid = sign === hash;
-    // console.log(isValid)
+
     console.log(req.body)
     console.log(hash)
     console.log(sign)
