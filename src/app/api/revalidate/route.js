@@ -16,9 +16,16 @@ export const POST = async (req, res) => {
     console.log(generateWebhookSignature({ body, secret }))
     console.log(generateWebhookSignature({ body, secret }))
     console.log(generateWebhookSignature({ body, secret }))
-    console.log(signature)
+
 
     const isValid = verifyWebhookSignature({ body, signature, secret });
+    const isValid2 = verifyWebhookSignature({ body, signature, secret });
+    const isValid3 = verifyWebhookSignature({ body, signature, secret });
+    const isValid4 = verifyWebhookSignature({ body, signature, secret });
+    console.log(isValid)
+    console.log(isValid2)
+    console.log(isValid3)
+    console.log(isValid4)
 
 
 
