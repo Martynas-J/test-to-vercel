@@ -17,7 +17,7 @@ export const POST = async (req, res) => {
     console.log(await req.json())
 
     let payload = JSON.stringify({
-        Body: JSON.stringify(body),
+        Body: stringify(body),
         EnvironmentName,
         TimeStamp: Timestamp,
     });
