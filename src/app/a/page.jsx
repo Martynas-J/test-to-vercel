@@ -1,6 +1,5 @@
 import FeaturedPosts from '@/components/ui/FeaturedPosts'
 import { fetchGraphQL } from '@/lib/graphql-utils';
-import React from 'react'
 
 export const revalidate = true
 
@@ -27,7 +26,7 @@ async function getPosts() {
   return data;
 }
 
-const page = async () => {
+export default async function Page() {
   const { posts } = await getPosts();
   return (
     <div>
@@ -36,4 +35,3 @@ const page = async () => {
   )
 }
 
-export default page
