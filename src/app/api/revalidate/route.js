@@ -14,10 +14,10 @@ export const POST = async (req, res) => {
     const Timestamp = parseInt(rawTimestamp.replace('t=', ''));
 
     const body = await req.json()
-    console.log(body)
+    console.log(await req.json())
 
     let payload = JSON.stringify({
-        Body: {},
+        Body: body.stringify(),
         EnvironmentName,
         TimeStamp: Timestamp,
     });
