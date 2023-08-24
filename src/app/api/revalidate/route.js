@@ -9,8 +9,7 @@ export const POST = async (req, res) => {
     const signature = headers().get("gcms-signature");
 
     const bodyReq = await req.json()
-    const body = JSON.stringify(bodyReq)
-    const isValid = verifyWebhookSignature({ body, signature, secret });
+    const isValid = verifyWebhookSignature({ bodyReq, signature, secret });
 
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method Not Allowed' });
