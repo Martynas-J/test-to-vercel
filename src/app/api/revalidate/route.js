@@ -24,7 +24,7 @@ export const POST = async (req, res) => {
     const hash = createHmac('sha256', secret).update(payload).digest('base64');
     // const isValid = sign === hash;
 
-    console.log(req.body)
+    console.log(JSON.stringify(req.body))
     console.log(hash)
     console.log(sign)
 
