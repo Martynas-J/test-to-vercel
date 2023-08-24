@@ -8,8 +8,8 @@ export const POST = async (req, res) => {
     const secret = "2e9291f10d44ca10204a4cd81b05d73b6a316b2b605d4e2e0e0b37b40198ce1f";
     const body = {}
     const signature = headers().get("gcms-signature");
-    console.log(signature)
     console.log(req.headers)
+    console.log(signature)
     console.log(generateWebhookSignature({ body, secret }))
     const isValid = verifyWebhookSignature({ body, signature, secret });
 
