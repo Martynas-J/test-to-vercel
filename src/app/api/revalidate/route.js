@@ -22,22 +22,7 @@ export const POST = async (req, res) => {
     console.log(generateWebhookSignature({ rawPayload, secret }))
     console.log(generateWebhookSignature({ rawPayload, secret }))
     console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
-    console.log(generateWebhookSignature({ rawPayload, secret }))
+
 
     const isValid = verifyWebhookSignature({ rawPayload, signature, secret });
     console.log(isValid)
