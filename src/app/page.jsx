@@ -1,6 +1,8 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { fetchGraphQL } from "@/lib/graphql-utils";
 
+export const revalidate = 10;  
+
 async function getProjects() {
   const query = `
         query Heroes {
