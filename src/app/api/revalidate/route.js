@@ -9,7 +9,7 @@ export const POST = async (req, res) => {
     const rawPayload = '{"hello":"world"}';
 
 
-
+    console.log(req.headers)
     const signature = headers().get("gcms-signature");
     console.log(signature)
     console.log(generateWebhookSignature({ rawPayload, secret }))
@@ -26,7 +26,7 @@ export const POST = async (req, res) => {
 
     const isValid = verifyWebhookSignature({ rawPayload, signature, secret });
     console.log(isValid)
-  
+
 
 
 
