@@ -21,11 +21,14 @@ export const POST = async (req, res) => {
 
     const { createHmac } = require('crypto');
 
-    const hash = createHmac('sha256', secret).update(payload).digest('base64');
-    const isValid = sign === hash;
+    const hash = createHmac('sha256', secret)
+    console.log(hash)
+    console.log(hash.update(payload))
+    console.log(hash.update(payload).digest('base64'))
+
+    // const isValid = sign === hash;
 
     console.log(sign)
-    console.log(hash)
     console.log(isValid)
 
     if (req.method !== 'POST') {
