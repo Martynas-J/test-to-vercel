@@ -24,12 +24,13 @@ export const POST = async (req, res) => {
     const hash = createHmac('sha256', secret)
     console.log(hash)
     console.log(hash.update(payload))
+    console.log(hash.digest('base64'))
     console.log(hash.update(payload).digest('base64'))
 
     // const isValid = sign === hash;
 
     console.log(sign)
-    console.log(isValid)
+    // console.log(isValid)
 
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method Not Allowed' });
