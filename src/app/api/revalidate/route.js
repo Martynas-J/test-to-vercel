@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { headers } from "next/headers";
 import { revalidatePath, revalidateTag } from 'next/cache'
 import { createHmac } from 'crypto';
+import { handleNewPost } from '@/components/postActions';
 
 // export const revalidate = 0;  
 
