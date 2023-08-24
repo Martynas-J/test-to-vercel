@@ -6,6 +6,7 @@ export const POST = async (req, res) => {
     const secret = process.env.SECRET_HYGRAPH
     console.log(secret)
 
+
     const signature = headers().get("gcms-signature");
 
     const [rawSign, rawEnv, rawTimestamp] = signature.split(', ');
