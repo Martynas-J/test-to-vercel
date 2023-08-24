@@ -7,23 +7,18 @@ export const POST = async (req, res) => {
 
     const signature = headers().get("gcms-signature");
 
-    const [rawSign, rawEnv, rawTimestamp] = signature.split(', ');
+    const [rawSign] = signature.split(', ');
 
     const sign = rawSign.replace('sign=', '');
-    const EnvironmentName = rawEnv.replace('env=', '');
-    const Timestamp = parseInt(rawTimestamp.replace('t=', ''));
-
 
     const { createHmac } = require('crypto');
 
     const hash = createHmac('sha256', secret).digest('base64')
-    console.log(hash)
-
-
     // const isValid = sign === hash;
-
-    console.log(sign)
     // console.log(isValid)
+    console.log(req.body)
+    console.log(hash)
+    console.log(sign)
 
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method Not Allowed' });
@@ -35,7 +30,7 @@ export const POST = async (req, res) => {
 
     try {
         revalidatePath('/')
-        return new NextResponse("Veikia" + isValid, { status: 200 });
+        return new NextResponse("Veikia" , { status: 200 });
     } catch (err) {
         return new NextResponse(" Error :(", { status: 500 });
     }
