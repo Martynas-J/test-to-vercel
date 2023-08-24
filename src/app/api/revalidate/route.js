@@ -38,7 +38,8 @@ export const POST = async (req, res) => {
 
     try {
         // revalidatePath('/a')
-        revalidateTag('posts')
+        // revalidateTag('posts')
+        handleNewPost(bodyReq);
         return new NextResponse("Veikia", { status: 200 });
     } catch (err) {
         return new NextResponse(" Error :(", { status: 500 });
