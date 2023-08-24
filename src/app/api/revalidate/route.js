@@ -38,8 +38,8 @@ export const POST = async (req, res) => {
 
     try {
         // revalidatePath('/a')
-        await res.revalidate('/a');
-        // await cache.revalidate(req, ['/a']);
+        // await res.revalidate('/a');
+        await cache.revalidate(req, ['/a']);
         return new NextResponse("Veikia", { status: 200 });
     } catch (err) {
         return new NextResponse(" Error :(", { status: 500 });
