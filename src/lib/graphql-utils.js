@@ -1,6 +1,4 @@
-import { revalidateTag } from 'next/cache';
-
-export async function fetchGraphQL(query) {
+export async function fetchGraphQL(query, options = {}) {
   try {
     const response = await fetch(process.env.HYGRAPH_GRAPHQL_URI, {
       method: "POST",
@@ -8,6 +6,10 @@ export async function fetchGraphQL(query) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ query }),
+      ...options,
+      next: {
+        tags: ["post"] 
+      },
     });
 
     if (!response.ok) {
@@ -20,14 +22,4 @@ export async function fetchGraphQL(query) {
     console.error("Error fetching data:", error);
     throw error;
   }
-}
-
-export async function fetchGraphQLAndRevalidate(query) {
-  const data = await fetchGraphQL(query);
-
-  // Priskirkite žymą, susijusią su šiais duomenimis
-  const tag = 'post';
-  revalidateTag(tag);
-
-  return data;
 }
