@@ -17,7 +17,7 @@ async function getPosts() {
       publishedAt
       updatedAt
       createdBy {
-        name
+        name 
       }
       id
     }
