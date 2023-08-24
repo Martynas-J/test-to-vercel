@@ -1,4 +1,4 @@
-export async function fetchGraphQL(query, options = {}) {
+export async function fetchGraphQL(query) {
   try {
     const response = await fetch(process.env.HYGRAPH_GRAPHQL_URI, {
       method: "POST",
@@ -6,7 +6,9 @@ export async function fetchGraphQL(query, options = {}) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ query }),
-      ...options,
+      next: {
+        tags: ["post"]
+      },
     });
 
     if (!response.ok) {

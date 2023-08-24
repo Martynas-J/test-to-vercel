@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { headers } from "next/headers";
-import { revalidatePath, revalidateTag, cache } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 import { createHmac } from 'crypto';
 
 // export const revalidate = 0;  
@@ -37,9 +37,8 @@ export const POST = async (req, res) => {
     }
 
     try {
-        // revalidatePath('/a')
-        // await res.revalidate('/a');
-        await cache.revalidate(req, ['/a']);
+        revalidatePath('/a')
+        revalidateTag("post");
         return new NextResponse("Veikia", { status: 200 });
     } catch (err) {
         return new NextResponse(" Error :(", { status: 500 });
