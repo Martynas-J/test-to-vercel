@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache'
 import { createHmac } from 'crypto';
 
 
-export const revalidate = 10;  
+export const revalidate = 0;  
 
 export const POST = async (req, res) => {
     const secret = process.env.HYGRAPH_POSTS_WEBHOOK_KEY
