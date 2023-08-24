@@ -25,6 +25,7 @@ export const POST = async (req, res) => {
     // const isValid = sign === hash;
 
     console.log(JSON.stringify(req.body))
+    console.log(payload)
     console.log(hash)
     console.log(sign)
 
