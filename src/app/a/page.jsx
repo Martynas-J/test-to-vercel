@@ -1,4 +1,3 @@
-import Notification from '@/components/Notification';
 import FeaturedPosts from '@/components/ui/FeaturedPosts'
 import { fetchGraphQL } from '@/lib/graphql-utils';
 
@@ -21,8 +20,8 @@ async function getPosts() {
   }
 `;
 
-  const data = await fetchGraphQL(query, {next: { tags: ["post"] }})
-  console.log(data)
+  const data = await fetchGraphQL(query, [{ next: { tags: ["post"] } }])
+  console.log("Duomenys" + data)
   return data;
 }
 export default async function Page() {
