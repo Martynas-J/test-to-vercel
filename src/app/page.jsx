@@ -16,8 +16,9 @@ async function getProjects() {
           }
         }
       `;
-
+  console.log("getProjects funkcija veikia")
   const data = await fetchGraphQL(query);
+  console.log("Duomenys" + data)
   return data;
 }
 
