@@ -1,10 +1,6 @@
 import FeaturedPosts from '@/components/ui/FeaturedPosts'
 import { fetchGraphQL } from '@/lib/graphql-utils';
 
-
-export const dynamic = "force-dynamic"  
-export const revalidate = 0
-
 async function getPosts() {
   const query = `
   query Posts {
