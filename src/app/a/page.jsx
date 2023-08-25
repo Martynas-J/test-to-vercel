@@ -27,7 +27,6 @@ async function getPosts() {
 }
 export default async function Page() {
   const { posts } = await getPosts();
-  <Notification />
   return (
     <div>
       <FeaturedPosts data={posts} />

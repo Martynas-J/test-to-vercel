@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 import { headers } from "next/headers";
+import { revalidatePath, revalidateTag } from 'next/cache'
 import { createHmac } from 'crypto';
-import { toast } from 'react-toastify';
 
-export const revalidate = true
+// export const revalidate = 0;  
 
 export const POST = async (req, res) => {
     const secret = process.env.HYGRAPH_POSTS_WEBHOOK_KEY
@@ -37,8 +37,7 @@ export const POST = async (req, res) => {
     }
 
     try {
-        const message = "Naujas postas sukuriamas!";
-        toast.info(message);
+        revalidateTag("post");
         return new NextResponse("Veikia", { status: 200 });
     } catch (err) {
         return new NextResponse(" Error :(", { status: 500 });

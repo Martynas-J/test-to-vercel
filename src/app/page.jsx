@@ -24,7 +24,6 @@ async function getProjects() {
 
 export default async function Home() {
   const { heroes } = await getProjects();
-  <Notification />
   return (
     <div>
       <div>MagicJourney Labs</div>
