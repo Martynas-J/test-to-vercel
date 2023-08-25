@@ -20,10 +20,9 @@ async function getPosts() {
   }
 `;
 
-  const data = await fetchGraphQL(query)
+  const data = await fetchGraphQL(query, {next: { tags: ["post"] }})
   return data;
 }
-
 export default async function Page() {
   const { posts } = await getPosts();
   return (

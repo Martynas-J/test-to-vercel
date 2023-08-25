@@ -3,8 +3,7 @@ import { headers } from "next/headers";
 import { revalidatePath, revalidateTag } from 'next/cache'
 import { createHmac } from 'crypto';
 
-export const dynamic = "force-dynamic"  
-export const revalidate = 0
+export const revalidate = true
 
 export const POST = async (req, res) => {
     const secret = process.env.HYGRAPH_POSTS_WEBHOOK_KEY
@@ -38,7 +37,7 @@ export const POST = async (req, res) => {
     }
 
     try {
-        revalidatePath('/a')
+        // revalidatePath('/a')
         revalidateTag("post");
         return new NextResponse("Veikia", { status: 200 });
     } catch (err) {

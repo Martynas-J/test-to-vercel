@@ -1,5 +1,4 @@
-export const dynamic = "force-dynamic"  
-export const revalidate = 0
+export const revalidate = true
 export async function fetchGraphQL(query, options = {}) {
   try {
     const response = await fetch(process.env.HYGRAPH_GRAPHQL_URI, {
@@ -9,9 +8,6 @@ export async function fetchGraphQL(query, options = {}) {
       },
       body: JSON.stringify({ query }),
       ...options,
-      next: {
-        tags: ["post"] 
-      },
     });
 
     if (!response.ok) {
