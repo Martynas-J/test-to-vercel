@@ -1,6 +1,6 @@
 import FeaturedPosts from '@/components/ui/FeaturedPosts'
 import { fetchGraphQL } from '@/lib/graphql-utils';
-
+export const revalidate = true;  
 async function getPosts() {
   const query = `
   query Posts {
