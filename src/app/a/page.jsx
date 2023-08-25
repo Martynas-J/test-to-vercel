@@ -22,6 +22,7 @@ async function getPosts() {
 `;
 
   const data = await fetchGraphQL(query, {next: { tags: ["post"] }})
+  console.log(data)
   return data;
 }
 export default async function Page() {
