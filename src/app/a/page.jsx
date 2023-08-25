@@ -1,3 +1,4 @@
+import Notification from '@/components/Notification';
 import FeaturedPosts from '@/components/ui/FeaturedPosts'
 import { fetchGraphQL } from '@/lib/graphql-utils';
 
@@ -25,6 +26,7 @@ async function getPosts() {
 }
 export default async function Page() {
   const { posts } = await getPosts();
+  <Notification />
   return (
     <div>
       <FeaturedPosts data={posts} />

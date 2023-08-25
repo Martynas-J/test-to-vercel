@@ -1,3 +1,4 @@
+import Notification from "@/components/Notification";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { fetchGraphQL } from "@/lib/graphql-utils";
 
@@ -23,7 +24,7 @@ async function getProjects() {
 
 export default async function Home() {
   const { heroes } = await getProjects();
-
+  <Notification />
   return (
     <div>
       <div>MagicJourney Labs</div>
