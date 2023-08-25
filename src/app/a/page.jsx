@@ -19,9 +19,9 @@ async function getPosts() {
     }
   }
 `;
-
-  const data = await fetchGraphQL(query, [{ next: { tags: ["post"] } }])
-  console.log("Duomenys" + data)
+console.log("GetPost funkcija veikia")
+const data = await fetchGraphQL(query)
+console.log("Duomenys" + data)
   return data;
 }
 export default async function Page() {
