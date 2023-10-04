@@ -28,7 +28,6 @@ const Testimonials = ({ testimonials }) => {
               {isPlaying[reviewer.id] ? (
                 <ReactPlayer
                   controls={false}
-                  volume={0}
                   width='350px'
                   height='500px'
                   playing={true}
