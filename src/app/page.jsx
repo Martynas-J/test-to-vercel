@@ -2,7 +2,6 @@ import { fetchGraphQL } from '@/lib/utils/graphqlUtils';
 import { home } from '@/queries/home';
 import { ourProjects } from '@/queries/ourProjects';
 import { allServices } from '@/queries/services';
-import { allPosts } from '@/queries/posts';
 import HomePage from '@/components/ui/HomePage';
 import OurProjects from '@/components/ui/OurProjects';
 import Services from '@/components/ui/Services';
