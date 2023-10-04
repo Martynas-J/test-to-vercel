@@ -75,7 +75,7 @@ const Testimonials = ({ testimonials }) => {
           src='/up-right-48-blue.png'
           alt='arrow'
           width={20}
-          height={20}
+          height={20} 
         />
       </Link>
     </div>
